@@ -39,4 +39,20 @@ it("should remove apple eaten", () => {
   expect(grid.getApples().length).toBe(4)
 })
 
+it("should add 5 apples after all eaten", () => {
+  const grid = new Grid(configuration)
+  const apple = grid.getApples()[4]
+  grid.removeApple(apple)
+  const apple1 = grid.getApples()[3]
+  grid.removeApple(apple1)
+  const apple2 = grid.getApples()[2]
+  grid.removeApple(apple2)
+  const apple3 = grid.getApples()[1]
+  grid.removeApple(apple3)
+  const apple4 = grid.getApples()[0]
+  grid.removeApple(apple4)
+  
+  grid.seed()
+  expect(grid.getApples().length).toBe(5)
+})
 });

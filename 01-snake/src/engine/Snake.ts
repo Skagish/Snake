@@ -79,7 +79,13 @@ export class Snake {
   }
 
   isSnake(cell: Cell): boolean {
-    return false;
+    var die = false;
+    this.tail.forEach(element => {
+      if (element.x == cell.x && element.y == cell.y) {
+        die = true
+      }
+    })
+    return die
   }
 
   getDirection(): Direction {

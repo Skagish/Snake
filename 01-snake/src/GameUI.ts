@@ -50,7 +50,7 @@ class GameUI {
     context.textBaseline = "middle";
     context.textAlign = "center";
     context.fillStyle = "rgba(255,255,255,0.75)";
-    context.fillText("CODELEX", width / 2, height / 2);
+    context.fillText("Codelex", width / 2, height / 2);
   }
 
   drawScore(context: CanvasRenderingContext2D) {

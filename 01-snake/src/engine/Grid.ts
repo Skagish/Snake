@@ -1,5 +1,7 @@
 import { Cell } from "./Cell";
 import { Configuration } from "./Configuration";
+import { arrayExpression } from "@babel/types";
+
 
 export class Grid {
   private configuration: Configuration;
@@ -15,7 +17,13 @@ export class Grid {
     this.configuration = configuration;
   }
 
-  seed(): void {}
+  seed(): void {
+    this.apples.push(new Cell(Math.floor(Math.random() * 80), Math.floor(Math.random() * 40)))
+    this.apples.push(new Cell(Math.floor(Math.random() * 80), Math.floor(Math.random() * 40)))
+    this.apples.push(new Cell(Math.floor(Math.random() * 80), Math.floor(Math.random() * 40)))
+    this.apples.push(new Cell(Math.floor(Math.random() * 80), Math.floor(Math.random() * 40)))
+    this.apples.push(new Cell(Math.floor(Math.random() * 80), Math.floor(Math.random() * 40)))
+  }
 
   isAppleInside(cell: Cell): boolean {
     return this.apples.find(apples => apples.x === cell.x && apples.y === cell.y) !== undefined
@@ -28,7 +36,11 @@ export class Grid {
   }
 
   isDone(): boolean {
-    return false;
+    var done = false;
+    if (this.apples.length == 0){
+      done = true;
+    }
+    return done
   }
 
   getApples(): Cell[] {

@@ -170,7 +170,13 @@ function () {
     this.configuration = configuration;
   }
 
-  Grid.prototype.seed = function () {};
+  Grid.prototype.seed = function () {
+    this.apples.push(new _Cell.Cell(Math.floor(Math.random() * 80), Math.floor(Math.random() * 40)));
+    this.apples.push(new _Cell.Cell(Math.floor(Math.random() * 80), Math.floor(Math.random() * 40)));
+    this.apples.push(new _Cell.Cell(Math.floor(Math.random() * 80), Math.floor(Math.random() * 40)));
+    this.apples.push(new _Cell.Cell(Math.floor(Math.random() * 80), Math.floor(Math.random() * 40)));
+    this.apples.push(new _Cell.Cell(Math.floor(Math.random() * 80), Math.floor(Math.random() * 40)));
+  };
 
   Grid.prototype.isAppleInside = function (cell) {
     return this.apples.find(function (apples) {
@@ -187,7 +193,13 @@ function () {
   };
 
   Grid.prototype.isDone = function () {
-    return false;
+    var done = false;
+
+    if (this.apples.length == 0) {
+      done = true;
+    }
+
+    return done;
   };
 
   Grid.prototype.getApples = function () {
@@ -319,7 +331,13 @@ function () {
   };
 
   Snake.prototype.isSnake = function (cell) {
-    return false;
+    var die = false;
+    this.tail.forEach(function (element) {
+      if (element.x == cell.x && element.y == cell.y) {
+        die = true;
+      }
+    });
+    return die;
   };
 
   Snake.prototype.getDirection = function () {
@@ -509,7 +527,7 @@ function () {
     context.textBaseline = "middle";
     context.textAlign = "center";
     context.fillStyle = "rgba(255,255,255,0.75)";
-    context.fillText("CODELEX", width / 2, height / 2);
+    context.fillText("Leonards", width / 2, height / 2);
   };
 
   GameUI.prototype.drawScore = function (context) {
@@ -706,7 +724,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50280" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60813" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

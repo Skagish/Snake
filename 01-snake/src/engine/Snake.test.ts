@@ -1,6 +1,7 @@
 import { Snake } from './Snake'
 import { Cell } from './Cell'
 import { Grid } from './Grid';
+import { Game } from './Game';
 
 describe("Snake", () => {
     it("should take three cells at the beginning", () => {
@@ -73,18 +74,18 @@ describe("Snake", () => {
         expect(snake.getHead()).toEqual(new Cell(4, 0))
         expect(snake.getTail()).toEqual([new Cell(2, 0), new Cell(3, 0)])
     })
-    it("should not cross its tail", () => {
+    
+    it("should stop if ate itselft", () => {
         const snake = new Snake()
-        snake.grow()
-        
-        snake.setDirection('Down')
-        snake.move()  
-        snake.setDirection('Left')
-        snake.move() 
-        snake.setDirection('Up')
-        snake.move()  
-        expect(snake.getHead()).toEqual(new Cell(1, 0))
-        expect(snake.getTail().length).toBe(5)
-        expect(snake.isSnake(new Cell(1, 0)))
-    })
+            snake.grow()
+            snake.setDirection('Down')
+            snake.move()  
+            snake.setDirection('Left')
+            snake.move() 
+            snake.setDirection('Up')
+            snake.move()  
+            expect(snake.getHead()).toEqual(new Cell(1, 0))
+            expect(snake.getTail().length).toBe(5)
+            expect(snake.isSnake(new Cell(1, 0)))
+      })
 })
